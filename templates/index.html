@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeQuest - Master the Logic of Code</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: #0f0c29;
+      background-image: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .glass-container {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="text-white antialiased">
+
+  <!-- This div will be the canvas for the particle animation -->
+  <div id="tsparticles"></div>
+
+  <div class="min-h-screen flex flex-col items-center justify-center text-center p-4">
+
+    <div class="glass-container p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl w-full">
+      
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-300">
+        CodeQuest
+      </h1>
+      
+      <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+        Go beyond syntax. Understand the <strong class="font-semibold text-white">fundamental logic and flow of control</strong> that powers modern software.
+      </p>
+      
+      <a href="/dashboard"
+         class="mt-10 inline-block px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-500
+                transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-blue-500/40
+                transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
+        Begin Your Journey
+      </a>
+    </div>
+
+  </div>
+
+  <!-- tsParticles library -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+  
+  <script>
+    // Initialize tsParticles
+    tsParticles.load("tsparticles", {
+      fpsLimit: 120,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "repulse",
+          },
+          resize: true,
+        },
+        modes: {
+          repulse: {
+            distance: 80,
+            duration: 0.4,
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: "#ffffff",
+        },
+        links: {
+          color: "#ffffff",
+          distance: 150,
+          enable: true,
+          opacity: 0.15,
+          width: 1,
+        },
+        collisions: {
+          enable: false,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "bounce",
+          },
+          random: false,
+          speed: 1,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+            area: 800,
+          },
+          value: 80,
+        },
+        opacity: {
+          value: 0.15,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 3 },
+        },
+      },
+      detectRetina: true,
+    });
+  </script>
+
+</body>
+</html>

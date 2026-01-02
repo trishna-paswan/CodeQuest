@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command the Robot | CodeQuest</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0c29;
+      background-image: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    }
+    .glass-card {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+    .animate-shake {
+      animation: shake 0.5s ease-in-out;
+    }
+    .line-code {
+        white-space: pre;
+        padding: 2px 4px;
+        transition: background-color 0.3s;
+    }
+    .prose { max-width: none; }
+    .prose code { color: inherit; }
+  </style>
+</head>
+
+<body class="text-white antialiased min-h-screen p-4 sm:p-6 lg:p-8">
+
+<div class="max-w-7xl mx-auto">
+
+  <!-- HEADER -->
+  <header class="mb-10 border-b border-gray-700 pb-6">
+    <div class="flex items-center justify-between">
+      <a href="/dashboard" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">&larr; Back to Dashboard</a>
+      <span class="text-sm bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full shadow-md">
+        Flow of Control
+      </span>
+    </div>
+    <div class="text-center mt-4">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-300">
+            Command the Robot
+        </h1>
+        <p class="text-slate-300 max-w-2xl mx-auto text-lg">
+            Click the program lines in the <strong>exact order</strong> the computer executes them.
+        </p>
+    </div>
+  </header>
+
+  <!-- MAIN GRID -->
+  <main class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+
+    <!-- Left Column: Program + Execution -->
+    <div class="xl:col-span-2 flex flex-col gap-8">
+      <!-- PROGRAM CODE -->
+      <div class="glass-card p-6 rounded-2xl shadow-xl">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3 text-blue-300">
+          <i class="fas fa-file-code"></i>
+          Program Code
+        </h2>
+        <div id="code" class="font-mono text-sm text-slate-300 space-y-1 bg-black/30 p-4 rounded-xl min-h-[250px] overflow-x-auto ring-1 ring-white/10">
+          <!-- code injected here -->
+        </div>
+      </div>
+
+      <!-- EXECUTION ORDER -->
+      <div class="glass-card p-6 rounded-2xl shadow-xl">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3 text-blue-300">
+          <i class="fas fa-shoe-prints fa-flip-horizontal"></i>
+          Execution Steps
+        </h2>
+        <p class="text-sm text-slate-400 mb-4">
+          Click the next line of code that you think will execute.
+        </p>
+        <ul id="choices" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          <!-- clickable steps -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Column: Explanation + Controls -->
+    <div class="glass-card p-6 rounded-2xl shadow-xl flex flex-col">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3 text-blue-300">
+        <i class="fas fa-lightbulb"></i>
+        Explanation
+      </h2>
+      <div id="explanation" class="text-slate-300 text-base bg-black/30 p-4 rounded-xl flex-grow min-h-[160px] ring-1 ring-white/10 prose prose-invert">
+        Select a line to begin and see how the program flows.
+      </div>
+      <p id="status" class="mt-4 text-lg text-center font-semibold h-6 flex items-center justify-center"></p>
+      <button onclick="nextProgram()"
+              class="mt-4 w-full px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-500
+              transition-all duration-300 font-semibold shadow-lg hover:shadow-blue-500/40
+              transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50 flex items-center justify-center gap-2">
+        Next Program <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+  </main>
+</div>
+
+<script src="{{ url_for('static', filename='js/robot.js') }}"></script>
+
+</body>
+</html>
